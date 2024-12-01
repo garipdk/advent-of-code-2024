@@ -22,8 +22,7 @@ def main(filepath):
             for i, a in enumerate(list_a):
                 b = list_b[i]
                 
-                num_min = a
-                num_max = b
+                (num_min, num_max) = (a, b)
                 
                 if a > b:
                     (num_min, num_max) = (b, a)

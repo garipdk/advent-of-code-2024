@@ -19,10 +19,10 @@ def main(filepath):
                     list_b.append(int(two_strings[1]))
             
             for a in list_a:
-                b = list_b.count(a)
+                num_a_in_list_b = list_b.count(a)
                 
-                if b != 0:
-                    result += (a * b)
+                if a != 0 and num_a_in_list_b > 0:
+                    result += (a * num_a_in_list_b)
     
     return result
         
