@@ -1,29 +1,35 @@
+import bisect 
 import sys
 
 def main(filepath):
-    list_a = []
-    list_b = []
-    with open(filepath) as f:
-        lines = f.readlines()
-        for line in lines:
-            two_strings = line.split("   ")
-            if len(two_strings) == 2:
-                list_a.append(int(two_strings[0]))
-                list_b.append(int(two_strings[1]))
-            
     result = 0
     
-    if len(list_a) == len(list_b):
-        list_a.sort()
-        list_b.sort()
-        
-        for i, a in enumerate(list_a):
-            b = list_b[i]
+    with open(filepath) as f:
+        if f.readline() != '':
             
-            if a > b:
-                (a, b) = (b, a)
-            result += (b - a)
-    
+            list_a = []
+            list_b = []
+            
+            f.seek(0)
+            
+            for line in f:
+                two_strings = line.split()
+                
+                if len(two_strings) == 2:
+                    bisect.insort(list_a, int(two_strings[0])) 
+                    bisect.insort(list_b, int(two_strings[1]))
+            
+            for i, a in enumerate(list_a):
+                b = list_b[i]
+                
+                num_min = a
+                num_max = b
+                
+                if a > b:
+                    (num_min, num_max) = (b, a)
+                
+                result += (num_max - num_min)
+
     return result
         
 

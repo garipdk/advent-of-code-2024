@@ -1,26 +1,28 @@
 import sys
 
 def main(filepath):
-    list_a = []
-    list_b = []
-    with open(filepath) as f:
-        lines = f.readlines()
-        for line in lines:
-            two_strings = line.split("   ")
-            if len(two_strings) == 2:
-                list_a.append(int(two_strings[0]))
-                list_b.append(int(two_strings[1]))
-            
     result = 0
     
-    if len(list_a) == len(list_b):
-        list_a.sort()
-        list_b.sort()
+    with open(filepath) as f:
         
-        for a in list_a:
-            b = list_b.count(a)
-            if b > 0:
-                result += (a * b)
+        if f.readline() != '':
+            list_a = []
+            list_b = []
+            
+            f.seek(0)
+            
+            for line in f:
+                two_strings = line.split()
+                
+                if len(two_strings) == 2:
+                    list_a.append(int(two_strings[0]))
+                    list_b.append(int(two_strings[1]))
+            
+            for a in list_a:
+                b = list_b.count(a)
+                
+                if b != 0:
+                    result += (a * b)
     
     return result
         
