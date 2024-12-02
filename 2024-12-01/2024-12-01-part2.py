@@ -1,5 +1,6 @@
 import sys
 
+
 def main(filepath):
     result = 0
     

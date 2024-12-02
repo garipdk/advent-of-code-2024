@@ -1,6 +1,7 @@
 import sys
 import bisect
 
+
 def main(filepath):
     result = 0
     
